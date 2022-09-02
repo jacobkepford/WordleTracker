@@ -25,11 +25,12 @@ const Home: NextPage = () => {
         <h1 className="title">Worlde Tracker</h1>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Upload scores &rarr;</h2>
-            <p>Upload your score to the tracker</p>
-          </a>
-
+          <Link href="/upload">
+            <a className={styles.card}>
+              <h2>Upload scores &rarr;</h2>
+              <p>Upload your score to the tracker</p>
+            </a>
+          </Link>
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Administration &rarr;</h2>
             <p>Access administration features of the application</p>
