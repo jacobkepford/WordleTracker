@@ -13,3 +13,9 @@ model Score {
   score_user  Int
   score_date  DateTime @db.Date
 }
+
+model User {
+  user_id         Int    @id @default(autoincrement())
+  user_first_name String
+  user_last_name  String
+}
