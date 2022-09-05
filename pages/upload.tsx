@@ -6,6 +6,11 @@ type Error = {
   scoreDateError: string;
 };
 
+type FormData = {
+  scoreDate: Date;
+  scoreCount: number;
+};
+
 export default function Upload() {
   const [scoreCount, setScoreCount] = useState("");
   const [scoreDate, setScoreDate] = useState(
@@ -16,7 +21,52 @@ export default function Upload() {
     scoreDateError: "",
   });
 
-  const HandleSubmit = () => {};
+  const GatherFormData = (): FormData => {
+    const formData = {
+      scoreDate: new Date(scoreDate),
+      scoreCount: parseInt(scoreCount),
+    };
+
+    return formData;
+  };
+
+  const ValidateForm = (formData: FormData): boolean => {
+    let formIsValid = true;
+
+    if (!formData.scoreDate) {
+      formIsValid = false;
+      setErrors((errors) => ({ ...errors, scoreDateError: "Required" }));
+    }
+
+    if (!formData.scoreCount) {
+      formIsValid = false;
+      setErrors((errors) => ({ ...errors, scoreCountError: "Required" }));
+    }
+
+    return formIsValid;
+  };
+
+  const ClearValidation = () => {
+    setErrors((errors) => ({
+      ...errors,
+      scoreDateError: "",
+      scoreCountError: "",
+    }));
+  };
+
+  const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = GatherFormData();
+
+    const formIsValid = ValidateForm(formData);
+
+    if (!formIsValid) {
+      return;
+    }
+
+    ClearValidation();
+  };
 
   return (
     <>
