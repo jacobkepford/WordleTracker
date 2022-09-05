@@ -33,6 +33,7 @@ export default function Upload() {
   const ValidateForm = (formData: FormData): boolean => {
     let formIsValid = true;
 
+    //Empty date returns year value of 1969
     if (formData.scoreDate.getFullYear() < 1970) {
       formIsValid = false;
       setErrors((errors) => ({ ...errors, scoreDateError: "Required" }));
@@ -77,6 +78,7 @@ export default function Upload() {
             What date are you logging this score for?
           </label>
           <DatePicker
+            id="scoreDate"
             selected={scoreDate}
             onChange={(date: Date) => setScoreDate(date)}
           />
