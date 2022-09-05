@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 type Error = {
   scoreCountError: string;
@@ -13,9 +15,7 @@ type FormData = {
 
 export default function Upload() {
   const [scoreCount, setScoreCount] = useState("");
-  const [scoreDate, setScoreDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const [scoreDate, setScoreDate] = useState(new Date());
   const [errors, setErrors] = useState<Error>({
     scoreCountError: "",
     scoreDateError: "",
@@ -33,7 +33,8 @@ export default function Upload() {
   const ValidateForm = (formData: FormData): boolean => {
     let formIsValid = true;
 
-    if (!formData.scoreDate) {
+    debugger;
+    if (formData.scoreDate.getFullYear() < 1970) {
       formIsValid = false;
       setErrors((errors) => ({ ...errors, scoreDateError: "Required" }));
     }
@@ -76,12 +77,9 @@ export default function Upload() {
           <label htmlFor="scoreDate">
             What date are you logging this score for?
           </label>
-          <input
-            type="date"
-            className="form-control col-xs-3"
-            id="scoreDate"
-            onChange={(event) => setScoreDate(event.target.value)}
-            value={scoreDate}
+          <DatePicker
+            selected={scoreDate}
+            onChange={(date: Date) => setScoreDate(date)}
           />
           <span style={{ color: "red" }}>{errors.scoreDateError}</span>
         </div>
@@ -99,7 +97,7 @@ export default function Upload() {
           <span style={{ color: "red" }}>{errors.scoreCountError}</span>
         </div>
         <button type="submit" className="btn btn-primary">
-          Run Monty Hall Problem
+          Upload
         </button>
       </form>
       <h2>
