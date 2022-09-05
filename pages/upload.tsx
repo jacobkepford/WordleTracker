@@ -33,7 +33,6 @@ export default function Upload() {
   const ValidateForm = (formData: FormData): boolean => {
     let formIsValid = true;
 
-    debugger;
     if (formData.scoreDate.getFullYear() < 1970) {
       formIsValid = false;
       setErrors((errors) => ({ ...errors, scoreDateError: "Required" }));
