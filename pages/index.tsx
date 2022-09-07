@@ -3,14 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import prisma from "../lib/prisma";
-
-// interface Score {
-//   score_id: number;
-// }
-// interface HomeProps {
-//   score: Score[];
-// }
 
 const Home: NextPage = () => {
   return (
@@ -44,16 +36,5 @@ const Home: NextPage = () => {
     </div>
   );
 };
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const score = await prisma.score.findMany({
-//     select: {
-//       score_id: true,
-//     },
-//   });
-//   return {
-//     props: { score },
-//   };
-// };
 
 export default Home;

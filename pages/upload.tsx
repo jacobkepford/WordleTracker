@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import CreateScore from "../api/CreateScore";
 
 type Error = {
   scoreCountError: string;
@@ -67,6 +68,8 @@ export default function Upload() {
     }
 
     ClearValidation();
+
+    CreateScore(formData);
   };
 
   return (
