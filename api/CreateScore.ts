@@ -17,7 +17,9 @@ const CreateScore  = async (scoreData: ScoreData) => {
     }
     );
     if (response.status == 200){
-        return ("Score submitted successully");
+        return ("Score submitted successully!");
+    } else {
+        return ("Unable to submit score");
     }
 };
 

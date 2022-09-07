@@ -21,6 +21,7 @@ export default function Upload() {
     scoreCountError: "",
     scoreDateError: "",
   });
+  const [successMessage, setsuccessMessage] = useState("");
 
   const GatherFormData = (): FormData => {
     const formData = {
@@ -56,6 +57,19 @@ export default function Upload() {
     }));
   };
 
+  const ShowSuccessMessage = (message: string) => {
+    //Flash success message and then hide after 5 seconds
+    setsuccessMessage(message);
+    setTimeout(() => {
+      setsuccessMessage("");
+    }, 5000);
+  };
+
+  const ClearForm = () => {
+    setScoreCount("");
+    setScoreDate(new Date());
+  };
+
   const HandleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -69,11 +83,14 @@ export default function Upload() {
 
     ClearValidation();
     const message = await CreateScore(formData);
+    ShowSuccessMessage(message);
+    ClearForm();
   };
 
   return (
     <>
       <h1>Upload Score</h1>
+      <span>{successMessage}</span>
       <form onSubmit={HandleSubmit} className="text-light ms-3">
         <div className="form-group mb-3 w-25">
           <label htmlFor="scoreDate">
