@@ -46,6 +46,14 @@ export default function Upload() {
       setErrors((errors) => ({ ...errors, scoreCountError: "Required" }));
     }
 
+    if (formData.scoreCount < 1 || formData.scoreCount > 6) {
+      formIsValid = false;
+      setErrors((errors) => ({
+        ...errors,
+        scoreCountError: "Invalid. Score must be between 1 and 6",
+      }));
+    }
+
     return formIsValid;
   };
 
@@ -107,8 +115,6 @@ export default function Upload() {
           <label htmlFor="scoreNumber">What was your score?</label>
           <input
             type="number"
-            min={1}
-            max={7}
             className="form-control"
             id="scoreNumber"
             onChange={(event) => setScoreCount(event.target.value)}
