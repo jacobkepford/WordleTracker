@@ -56,7 +56,7 @@ export default function Upload() {
     }));
   };
 
-  const HandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const HandleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = GatherFormData();
@@ -68,8 +68,7 @@ export default function Upload() {
     }
 
     ClearValidation();
-
-    CreateScore(formData);
+    const message = await CreateScore(formData);
   };
 
   return (

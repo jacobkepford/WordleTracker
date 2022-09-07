@@ -16,6 +16,9 @@ const CreateScore  = async (scoreData: ScoreData) => {
         method: 'POST'
     }
     );
+    if (response.status == 200){
+        return ("Score submitted successully");
+    }
 };
 
 export default CreateScore;
