@@ -2,16 +2,11 @@ import Link from "next/link";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import CreateScore from "../api/CreateScore";
+import CreateScore, { ScoreData } from "../api/CreateScore";
 
 type Error = {
   scoreCountError: string;
   scoreDateError: string;
-};
-
-type FormData = {
-  scoreDate: Date;
-  scoreCount: number;
 };
 
 export default function Upload() {
@@ -23,7 +18,7 @@ export default function Upload() {
   });
   const [successMessage, setsuccessMessage] = useState("");
 
-  const GatherFormData = (): FormData => {
+  const GatherFormData = (): ScoreData => {
     const formData = {
       scoreDate: new Date(scoreDate),
       scoreCount: parseInt(scoreCount),
@@ -32,7 +27,7 @@ export default function Upload() {
     return formData;
   };
 
-  const ValidateForm = (formData: FormData): boolean => {
+  const ValidateForm = (formData: ScoreData): boolean => {
     let formIsValid = true;
 
     //Empty date returns year value of 1969
@@ -126,7 +121,7 @@ export default function Upload() {
           Upload
         </button>
       </form>
-      <h2>
+      <h2 className="mt-5">
         <Link href="/">Back to home</Link>
       </h2>
     </>
