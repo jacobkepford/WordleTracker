@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -19,7 +19,13 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <Link href="/upload">
             <a className={styles.card}>
-              <h2>Upload scores &rarr;</h2>
+              <h2>Upload Scores &rarr;</h2>
+              <p>Upload your score to the tracker</p>
+            </a>
+          </Link>
+          <Link href="/userscore/1">
+            <a className={styles.card}>
+              <h2>View Scores &rarr;</h2>
               <p>Upload your score to the tracker</p>
             </a>
           </Link>

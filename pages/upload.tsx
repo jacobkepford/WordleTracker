@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import Link from "next/link";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -9,7 +10,7 @@ type Error = {
   scoreDateError: string;
 };
 
-export default function Upload() {
+const Upload: NextPage = () => {
   const [scoreCount, setScoreCount] = useState("");
   const [scoreDate, setScoreDate] = useState(new Date());
   const [errors, setErrors] = useState<Error>({
@@ -126,4 +127,6 @@ export default function Upload() {
       </h2>
     </>
   );
-}
+};
+
+export default Upload;
