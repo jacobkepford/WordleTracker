@@ -21,7 +21,9 @@ const UserScore = ({ scores }: UserScoreProps) => {
 export const getServerSideProps: GetServerSideProps = async () => {
   const scores = await GetUserScores(1);
   return {
-    props: scores,
+    props: {
+      scores,
+    },
   };
 };
 
