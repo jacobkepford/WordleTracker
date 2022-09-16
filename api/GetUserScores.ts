@@ -11,7 +11,8 @@ export type UserScore = {
     "Three": number,
     "Four":  number,
     "Five":  number,
-    "Six": number
+    "Six": number,
+    "Total": number,
 }
 
 const GetUserScores = async (userID: number) => {
@@ -24,7 +25,8 @@ const GetUserScores = async (userID: number) => {
         "Three": 0,
         "Four": 0,
         "Five": 0,
-        "Six": 0
+        "Six": 0,
+        "Total": 0
     };
 
     data.score.forEach((score: ScoreData) => {
@@ -49,6 +51,7 @@ const GetUserScores = async (userID: number) => {
                 break; 
         }
     });
+    scoreData.Total = data.score.length;
     return scoreData;
 }
 

@@ -7,14 +7,18 @@ type UserScoreProps = {
 
 const UserScore = ({ scores }: UserScoreProps) => {
   return (
-    <div>
-      <h2>{`One: ${scores.One}`}</h2>
-      <h2>{`Two: ${scores.Two}`}</h2>
-      <h2>{`Three: ${scores.Three}`}</h2>
-      <h2>{`Four: ${scores.Four}`}</h2>
-      <h2>{`Five: ${scores.Five}`}</h2>
-      <h2>{`Six: ${scores.Six}`}</h2>
-    </div>
+    <>
+      <div className="text-center">
+        <h1 className="mb-3">Jacob, here are your scores:</h1>
+        <h2 className="mb-3">{`Played: ${scores.Total}`}</h2>
+        <h3>{`One: ${scores.One}`}</h3>
+        <h3>{`Two: ${scores.Two}`}</h3>
+        <h3>{`Three: ${scores.Three}`}</h3>
+        <h3>{`Four: ${scores.Four}`}</h3>
+        <h3>{`Five: ${scores.Five}`}</h3>
+        <h3>{`Six: ${scores.Six}`}</h3>
+      </div>
+    </>
   );
 };
 
