@@ -15,7 +15,7 @@ export type UserScore = {
     "Total": number,
 }
 
-const GetUserScores = async (userID: number) => {
+const GetUserScores = async (userID: string) => {
     const response = await fetch(`http://localhost:3000/api/score?id=${userID}`);
     const data = await response.json();
 

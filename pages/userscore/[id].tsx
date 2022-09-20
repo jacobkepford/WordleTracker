@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import GetUserScores, { UserScore } from "../../api/GetUserScores";
 
 type UserScoreProps = {
@@ -22,8 +23,9 @@ const UserScore = ({ scores }: UserScoreProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const scores = await GetUserScores(1);
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const userID = query.id ? query.id[0] : "1";
+  const scores = await GetUserScores(userID);
   return {
     props: {
       scores,

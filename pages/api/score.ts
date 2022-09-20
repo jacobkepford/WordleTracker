@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   else{
     if(req.query.id){
-      const userID: number = parseInt(req.query.id.toString());
+      const userID: number = parseInt(req.query.id[0]);
       const score = await prisma.score.findMany({
         where: {
           score_user: userID
