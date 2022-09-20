@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import GetUserScores, { UserScore } from "../../api/GetUserScores";
+import { HomeButton } from "../../components/homeButton";
 
 type UserScoreProps = {
   scores: UserScore;
@@ -18,6 +19,10 @@ const UserScore = ({ scores }: UserScoreProps) => {
         <h3>{`Four: ${scores.Four}`}</h3>
         <h3>{`Five: ${scores.Five}`}</h3>
         <h3>{`Six: ${scores.Six}`}</h3>
+      </div>
+
+      <div className="mt-3 me-3 float-end">
+        <HomeButton />
       </div>
     </>
   );

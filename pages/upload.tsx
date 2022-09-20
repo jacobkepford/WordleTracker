@@ -4,6 +4,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CreateScore, { ScoreData } from "../api/CreateScore";
+import { HomeButton } from "../components/homeButton";
 
 type Error = {
   scoreCountError: string;
@@ -118,12 +119,12 @@ const Upload: NextPage = () => {
           />
           <span style={{ color: "red" }}>{errors.scoreCountError}</span>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-dark">
           Upload
         </button>
       </form>
       <h2 className="mt-5">
-        <Link href="/">Back to home</Link>
+        <HomeButton />
       </h2>
     </>
   );
