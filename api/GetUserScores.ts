@@ -1,3 +1,5 @@
+import { User } from "../pages/api/user"
+
 type ScoreData = {
     score_id: number,
     score_value: number,
@@ -13,46 +15,56 @@ export type UserScore = {
     "Five":  number,
     "Six": number,
     "Total": number,
+    "User": User
 }
 
 const GetUserScores = async (userID: string) => {
-    const response = await fetch(`http://localhost:3000/api/score?id=${userID}`);
-    const data = await response.json();
+    const userResponse = await fetch(`http://localhost:3000/api/user?id=${userID}`);
+    const userData = await userResponse.json();
 
-    const scoreData: UserScore = {
+    const user = userData.user;
+    
+    const userScoreData: UserScore = {
         "One": 0,
         "Two": 0,
         "Three": 0,
         "Four": 0,
         "Five": 0,
         "Six": 0,
-        "Total": 0
+        "Total": 0,
+        "User": user
     };
+    
+    const scoreResponse = await fetch(`http://localhost:3000/api/score?id=${userID}`);
+    const scoreData = await scoreResponse.json();
 
-    data.score.forEach((score: ScoreData) => {
+    
+
+    scoreData.score.forEach((score: ScoreData) => {
         switch (score.score_value) {
             case 1:
-                scoreData.One = scoreData.One + 1;
+                userScoreData.One = userScoreData.One + 1;
                 break;
             case 2:
-                scoreData.Two = scoreData.Two + 1;
+                userScoreData.Two = userScoreData.Two + 1;
                 break;
             case 3:
-                scoreData.Three = scoreData.Three + 1;
+                userScoreData.Three = userScoreData.Three + 1;
                 break;
             case 4:
-                scoreData.Four = scoreData.Four + 1;
+                userScoreData.Four = userScoreData.Four + 1;
                 break;
             case 5:
-                scoreData.Five = scoreData.Five + 1;
+                userScoreData.Five = userScoreData.Five + 1;
                 break;  
             case 6:
-                scoreData.Six = scoreData.Six + 1;
+                userScoreData.Six = userScoreData.Six + 1;
                 break; 
         }
     });
-    scoreData.Total = data.score.length;
-    return scoreData;
+    userScoreData.Total = scoreData.score.length;
+
+    return userScoreData;
 }
 
 export default GetUserScores;
