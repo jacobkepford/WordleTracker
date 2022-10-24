@@ -1,12 +1,48 @@
 import { GetServerSideProps, NextPage } from "next";
 import GetUserScores, { UserScore } from "../../api/GetUserScores";
 import { HomeButton } from "../../components/homeButton";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 type UserScoreProps = {
   userScoreData: UserScore;
 };
 
 const UserScore = ({ userScoreData }: UserScoreProps) => {
+  const chartData = {
+    labels: ["One", "Two", "Three", "Four", "Five", "Six"],
+    datasets: [
+      {
+        label: "Score",
+        data: userScoreData.Scores.map((score) => score),
+        backgroundColor: [
+          "#ffbb11",
+          "#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0",
+          "#2a71d0",
+        ],
+      },
+    ],
+  };
   return (
     <>
       <div className="text-center">
@@ -14,12 +50,21 @@ const UserScore = ({ userScoreData }: UserScoreProps) => {
           {userScoreData.User.FirstName}, here are your scores:
         </h1>
         <h2 className="mb-3">{`Played: ${userScoreData.Total}`}</h2>
-        <h3>{`One: ${userScoreData.Scores[0]}`}</h3>
-        <h3>{`Two: ${userScoreData.Scores[1]}`}</h3>
-        <h3>{`Three: ${userScoreData.Scores[2]}`}</h3>
-        <h3>{`Four: ${userScoreData.Scores[3]}`}</h3>
-        <h3>{`Five: ${userScoreData.Scores[4]}`}</h3>
-        <h3>{`Six: ${userScoreData.Scores[5]}`}</h3>
+        <div>
+          <Bar
+            data={chartData}
+            width={"30%"}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Scores",
+                },
+              },
+              maintainAspectRatio: false,
+            }}
+          />
+        </div>
       </div>
 
       <div className="mt-3 me-3 float-end">
@@ -32,7 +77,6 @@ const UserScore = ({ userScoreData }: UserScoreProps) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const userID = query.id ? query.id[0] : "1";
   const userScoreData = await GetUserScores(userID);
-  console.log(userScoreData);
   return {
     props: {
       userScoreData,
