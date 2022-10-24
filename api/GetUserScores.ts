@@ -38,8 +38,6 @@ const GetUserScores = async (userID: string) => {
     const scoreResponse = await fetch(`http://localhost:3000/api/score?id=${userID}`);
     const scoreData = await scoreResponse.json();
 
-    
-
     scoreData.score.forEach((score: ScoreData) => {
         switch (score.score_value) {
             case 1:
