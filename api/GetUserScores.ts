@@ -8,12 +8,7 @@ type ScoreData = {
 }
 
 export type UserScore = {
-    "One": number,
-    "Two": number,
-    "Three": number,
-    "Four":  number,
-    "Five":  number,
-    "Six": number,
+    "Scores": number[],
     "Total": number,
     "User": User
 }
@@ -25,12 +20,7 @@ const GetUserScores = async (userID: string) => {
     const user = userData.user;
     
     const userScoreData: UserScore = {
-        "One": 0,
-        "Two": 0,
-        "Three": 0,
-        "Four": 0,
-        "Five": 0,
-        "Six": 0,
+        "Scores": [0, 0, 0, 0, 0, 0],
         "Total": 0,
         "User": user
     };
@@ -39,26 +29,7 @@ const GetUserScores = async (userID: string) => {
     const scoreData = await scoreResponse.json();
 
     scoreData.score.forEach((score: ScoreData) => {
-        switch (score.score_value) {
-            case 1:
-                userScoreData.One = userScoreData.One + 1;
-                break;
-            case 2:
-                userScoreData.Two = userScoreData.Two + 1;
-                break;
-            case 3:
-                userScoreData.Three = userScoreData.Three + 1;
-                break;
-            case 4:
-                userScoreData.Four = userScoreData.Four + 1;
-                break;
-            case 5:
-                userScoreData.Five = userScoreData.Five + 1;
-                break;  
-            case 6:
-                userScoreData.Six = userScoreData.Six + 1;
-                break; 
-        }
+        userScoreData.Scores[score.score_value - 1]++;
     });
     userScoreData.Total = scoreData.score.length;
 
