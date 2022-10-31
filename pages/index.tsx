@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           <Link href="/userscore/1">
             <a className={styles.card}>
               <h2>View Scores &rarr;</h2>
-              <p>Upload your score to the tracker</p>
+              <p>View a chart of your uploaded scores</p>
             </a>
           </Link>
           <a href="https://nextjs.org/learn" className={styles.card}>
