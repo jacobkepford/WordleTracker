@@ -33,42 +33,42 @@ const UserScore = ({ userScoreData }: UserScoreProps) => {
         label: "Score",
         data: userScoreData.Scores.map((score) => score),
         backgroundColor: [
-          "#ffbb11",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-          "#2a71d0",
+          "#665645",
+          "#ffffff",
+          "#818384",
+          "#b59f3b",
+          "#454566",
+          "#538d4e",
         ],
       },
     ],
   };
   return (
     <>
-      <div className="text-center">
-        <h1 className="mb-3">
+      <div className="row g-0 mt-3">
+        <h1 className="col-8 text-end">
           {userScoreData.User.FirstName}, here are your scores:
         </h1>
-        <h2 className="mb-3">{`Played: ${userScoreData.Total}`}</h2>
-        <div>
-          <Bar
-            data={chartData}
-            width={"30%"}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Scores",
-                },
-              },
-              maintainAspectRatio: false,
-            }}
-          />
+        <div className="col-4 text-end pe-3">
+          <HomeButton />
         </div>
       </div>
 
-      <div className="mt-3 me-3 float-end">
-        <HomeButton />
+      <div className="text-center">
+        <h2 className="mb-3">{`Total: ${userScoreData.Total}`}</h2>
+        <div className="w-50 mx-auto">
+          <Bar
+            data={chartData}
+            options={{
+              indexAxis: "y",
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+            }}
+          />
+        </div>
       </div>
     </>
   );
