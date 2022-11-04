@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className="title">Worlde Tracker</h1>
+        <h1 className="title">Wordle Tracker</h1>
 
         <div className={styles.grid}>
           <Link href="/upload">
