@@ -90,6 +90,11 @@ const Upload: NextPage = () => {
     ClearForm();
   };
 
+  const HandleClear = () => {
+    ClearValidation();
+    ClearForm();
+  };
+
   return (
     <div className="ms-3">
       <h1>Upload Score</h1>
@@ -117,9 +122,18 @@ const Upload: NextPage = () => {
           />
           <span style={{ color: "red" }}>{errors.scoreCountError}</span>
         </div>
-        <button type="submit" className="btn btn-dark">
-          Upload
-        </button>
+        <div className="d-flex">
+          <button
+            type="button"
+            className="btn btn-secondary me-3"
+            onClick={HandleClear}
+          >
+            Clear
+          </button>
+          <button type="submit" className="btn btn-dark">
+            Upload
+          </button>
+        </div>
       </form>
     </div>
   );
