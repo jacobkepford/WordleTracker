@@ -123,9 +123,6 @@ const Upload: NextPage = () => {
           Upload
         </button>
       </form>
-      <h2 className="mt-5">
-        <HomeButton />
-      </h2>
     </>
   );
 };

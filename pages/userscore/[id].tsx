@@ -49,9 +49,6 @@ const UserScore = ({ userScoreData }: UserScoreProps) => {
         <h1 className="col-8 text-end">
           {userScoreData.User.FirstName}, here are your scores:
         </h1>
-        <div className="col-4 text-end pe-3">
-          <HomeButton />
-        </div>
       </div>
 
       <div className="text-center">
