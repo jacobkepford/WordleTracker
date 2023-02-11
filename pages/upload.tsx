@@ -91,10 +91,10 @@ const Upload: NextPage = () => {
   };
 
   return (
-    <>
+    <div className="ms-3">
       <h1>Upload Score</h1>
       <span>{successMessage}</span>
-      <form onSubmit={HandleSubmit} className="text-light ms-3">
+      <form onSubmit={HandleSubmit} className="text-light">
         <div className="form-group mb-3 w-25">
           <label htmlFor="scoreDate">
             What date are you logging this score for?
@@ -121,7 +121,7 @@ const Upload: NextPage = () => {
           Upload
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

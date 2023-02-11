@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+    <nav className="navbar navbar-expand-lg navbar-dark ms-3">
       <Link href="/" passHref>
         <a className="navbar-brand">Wordle Tracker</a>
       </Link>
