@@ -1,10 +1,8 @@
 import { NextPage } from "next";
-import Link from "next/link";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CreateScore, { ScoreData } from "../api/CreateScore";
-import { HomeButton } from "../components/homeButton";
 
 type Error = {
   scoreCountError: string;

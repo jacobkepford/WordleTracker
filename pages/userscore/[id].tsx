@@ -1,6 +1,5 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps } from "next";
 import GetUserScores, { UserScore } from "../../api/GetUserScores";
-import { HomeButton } from "../../components/homeButton";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
