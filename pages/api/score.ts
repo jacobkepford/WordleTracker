@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     
     return res.status(200).json({ score });
   }
-  else{
+  else if (req.method == "GET"){
     if(req.query.id){
       const userID: number = parseInt(req.query.id[0]);
       const score = await prisma.score.findMany({
@@ -25,11 +25,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       
       return res.status(200).json({ score });
     }
-
-    return res.status(404);
     
+    const score = await prisma.score.findMany();
+    return res.status(200).json({score});
 
   }
+  
+  return res.status(404);
 }
 
 export default handler;
