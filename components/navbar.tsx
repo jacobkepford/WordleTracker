@@ -15,7 +15,12 @@ export const NavBar = () => {
           </li>
           <li className="nav-item">
             <Link href="/userscore/1" passHref>
-              <a className="nav-link">Scores</a>
+              <a className="nav-link">Your Scores</a>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/scores" passHref>
+              <a className="nav-link">All Scores</a>
             </Link>
           </li>
         </ul>
